@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class LivresController extends AbstractController
 {
-    #[Route('/Admin/livres', name: 'admin_livres')]
+    #[Route('/admin/livres', name: 'admin_livres')]
     public function index(LivresRepository $rep): Response
     {
         $livres=$rep->findAll();
@@ -24,7 +24,7 @@ class LivresController extends AbstractController
         ]);
     }
 
-    #[Route('/Admin/livres/show/{id}', name: 'admin_livres_show')]
+    #[Route('/admin/livres/show/{id}', name: 'admin_livres_show')]
     public function show(Livres $livre): Response
     {
         return $this->render('livres/show.html.twig', [
@@ -32,7 +32,7 @@ class LivresController extends AbstractController
         ]);
     }
 
-    #[Route('/Admin/livres/create', name: 'admin_livres_create')]
+    #[Route('/admin/livres/create', name: 'admin_livres_create')]
     public function create(EntityManagerInterface $em): Response
     {
         $livre=new Livres();
@@ -53,7 +53,7 @@ class LivresController extends AbstractController
        // dd($livre);
     }
 
-    #[Route('/Admin/livres/delete/{id}', name: 'admin_livres_delete')]
+    #[Route('/admin/livres/delete/{id}', name: 'admin_livres_delete')]
     public function delete(EntityManagerInterface $em, Livres $livre): Response
     {
         //recherche de livre a supprimer
@@ -67,7 +67,7 @@ class LivresController extends AbstractController
        // ]);
        return $this->redirectToRoute('admin_livres');
     }
-    #[Route('/Admin/livres/add', name: 'admin_livre_add')]
+    #[Route('/admin/livres/add', name: 'admin_livre_add')]
     public function add(EntityManagerInterface $en ,Request $request): Response
     {
         //affichage de l'objet formulaire

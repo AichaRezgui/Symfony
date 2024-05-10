@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class CategoriesController extends AbstractController
 {
-    #[Route('/Admin/categories', name: 'admin_categories')]
+    #[Route('/admin/categories', name: 'admin_categories')]
     public function index(CategoriesRepository $rep): Response
     {
         $categorie=$rep->findAll();
@@ -23,7 +23,7 @@ class CategoriesController extends AbstractController
         ]);
     }
 
-    #[Route('/Admin/categories/create', name: 'admin_categories_create')]
+    #[Route('/admin/categories/create', name: 'admin_categories_create')]
     public function create(EntityManagerInterface $en ,Request $request): Response
     {
         //affichage de l'objet formulaire
@@ -43,7 +43,7 @@ class CategoriesController extends AbstractController
         ]);
     }
 
-    #[Route('/Admin/categories/update/{id}', name: 'admin_categories_update')]
+    #[Route('/admin/categories/update/{id}', name: 'admin_categories_update')]
     public function update(Categories $categorie, EntityManagerInterface $en ,Request $request): Response
     {
         //affichage de l'objet formulaire
