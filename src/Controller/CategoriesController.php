@@ -62,4 +62,23 @@ class CategoriesController extends AbstractController
         ]);
     }
 
+
+    #[Route('/admin/categories/delete/{id}', name: 'admin_categories_delete')]
+public function delete(Categories $cat, EntityManagerInterface $entityManager): Response
+{
+    
+    if($cat->getLivres()){
+        $livres = $cat->getLivres();
+        foreach ($livres as $livre) {
+            $cat->removeLivre($livre);
+        }
+    }
+
+    $entityManager->remove($cat);
+
+    $entityManager->flush();
+
+    return $this->redirectToRoute('admin_categories');
+}
+
 }

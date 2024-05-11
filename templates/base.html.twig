@@ -20,17 +20,26 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="{{url('app_home')}}">Acceuil
+          <a class="nav-link" href="{{url('app_home')}}">Acceuil
             <span class="visually-hidden">(current)</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{url('admin_livres')}}">Nos Livres</a>
+          <a class="nav-link" href="{{url('app_all_livres')}}">Livres
+            <span class="visually-hidden"></span>
+          </a>
         </li>
+       {% if is_granted('ROLE_ADMIN') %}
          <li class="nav-item">
-          <a class="nav-link" href="{{url('admin_categories')}}">Nos Catégories</a>
-        </li>
-        
+           <a class="nav-link" href="{{ url('admin_livres') }}">Nos Livres</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" href="{{ url('admin_categories') }}">Nos Catégories</a>
+         </li>
+          <li class="nav-item">
+           <a class="nav-link" href="{{ url('app_admin_user_index') }}">Nos Utilisateurs</a>
+         </li>
+        {% endif %}
       </ul>
       <ul class="navbar-nav me-ml">
         <li class="nav-item">

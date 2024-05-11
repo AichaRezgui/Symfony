@@ -32,6 +32,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $adresse = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $num_telephone = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $nom_prenom = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $poste = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -112,5 +124,58 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->isVerified = $isVerified;
 
         return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(?string $adresse): static
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    public function getNumTelephone(): ?string
+    {
+        return $this->num_telephone;
+    }
+
+    public function setNumTelephone(?string $num_telephone): static
+    {
+        $this->num_telephone = $num_telephone;
+
+        return $this;
+    }
+
+    public function getNomPrenom(): ?string
+    {
+        return $this->nom_prenom;
+    }
+
+    public function setNomPrenom(?string $nom_prenom): static
+    {
+        $this->nom_prenom = $nom_prenom;
+
+        return $this;
+    }
+
+    public function getPoste(): ?string
+    {
+        return $this->poste;
+    }
+
+    public function setPoste(?string $poste): static
+    {
+        $this->poste = $poste;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->email;
     }
 }
